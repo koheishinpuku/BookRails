@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+  <p>
+    <strong>Title:</strong>
+    <%= @book.title %>
+  </p>
+
+  <p>
+    <strong>Memo:</strong>
+    <%= @book.memo %>
+  </p>
+
+  <p>
+    <strong>Author:</strong>
+    <%= @book.author %>
+  </p>
+
+  <p>
+    <strong>Picture:</strong>
+    <%= image_tag(@book.picture_url) if @book.picture.present? %>
+  </p>
+
+  <%= link_to 'Edit', edit_book_path(@book) %> |
+  <%= link_to 'Back', books_path %>
+  <%= link_to 'Logout', destroy_user_session_path %>
+<% else %>
+  <p>ログインしてください</p>
+  <%= link_to 'Login', new_user_session_path %>
+<% end %>
